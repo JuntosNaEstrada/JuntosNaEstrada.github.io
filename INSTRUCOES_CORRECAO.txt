@@ -1,0 +1,20 @@
+CORREÇÃO DO SITE BENICIO & LETICIA NA ESTRADA
+
+1. Envie os arquivos deste pacote para a raiz do repositório
+   JuntosNaEstrada/JuntosNaEstrada.github.io.
+2. Confirme a substituição dos arquivos existentes.
+3. Aguarde o GitHub Pages concluir a publicação.
+4. Abra https://juntosnaestrada.github.io/ em uma janela anônima.
+5. A página deverá redirecionar automaticamente para login.html.
+6. Entre com o usuário “Benicio e Leticia” e a senha criada no Supabase.
+7. Em Gerenciar viagens, clique em “Importar os 100 destinos”.
+
+Arquivos principais corrigidos:
+- auth.js: remove conflito de nome com a biblioteca Supabase;
+- app.js: restaura autenticação, filtros e carregamento;
+- admin.js: restaura gerenciamento e importação;
+- login.html, index.html e admin.html: atualizam scripts sem cache;
+- favicon.svg: adiciona o ícone BL ao navegador.
+
+Se o navegador ainda exibir a versão anterior, pressione Ctrl+F5 ou teste em
+uma janela anônima após a publicação terminar.

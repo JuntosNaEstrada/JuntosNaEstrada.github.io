@@ -1,6 +1,6 @@
 # Benicio & Leticia na Estrada
 
-Site privado de viagens para publicação no GitHub Pages. Inclui os 52 destinos do documento, autenticação, painel de gerenciamento e armazenamento privado de fotos no Supabase.
+Site privado de viagens para publicação no GitHub Pages. Inclui os 100 destinos do documento, autenticação, painel de gerenciamento e armazenamento privado de fotos no Supabase.
 
 ## 1. Criar e configurar o Supabase
 
@@ -27,7 +27,7 @@ A chave anon pode permanecer no site. A segurança real é garantida pela autent
 2. Em **Settings → Pages**, selecione **Deploy from a branch**, branch `main` e pasta `/ (root)`.
 3. Abra a URL publicada. A primeira página será a tela de senha.
 4. Entre com `Benicio e Leticia` e a senha cadastrada no Supabase.
-5. Abra **Gerenciar viagens** e clique em **Importar os 52 destinos**. O comando não duplica registros existentes.
+5. Abra **Gerenciar viagens** e clique em **Importar os 100 destinos**. O comando não duplica registros existentes.
 
 ## Privacidade
 
