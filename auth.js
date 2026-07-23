@@ -6,10 +6,12 @@ async function requireAuth() {
   if (!configured) return location.replace("login.html?setup=1");
   const { data } = await blSupabase.auth.getSession();
   if (!data.session) {
-    location.replace(`login.html?next=${encodeURIComponent(location.pathname.split('/').pop() || 'index.html')}`);
+    location.replace(`login.html?next=${encodeURIComponent(location.pathname.split('/').pop() || 'admin.html')}`);
     return null;
   }
   return data.session;
 }
 async function signOut() { await blSupabase.auth.signOut(); location.replace("login.html"); }
-function photoUrl(path) { return blSupabase.storage.from("trip-photos").createSignedUrl(path, 3600).then(r => r.data?.signedUrl || ""); }
+function photoUrl(path) {
+  return blSupabase.storage.from("trip-photos").getPublicUrl(path).data.publicUrl;
+}

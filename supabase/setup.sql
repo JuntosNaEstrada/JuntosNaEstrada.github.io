@@ -17,16 +17,15 @@ create table if not exists public.trip_photos (
 );
 alter table public.trips enable row level security;
 alter table public.trip_photos enable row level security;
-create policy "owner reads trips" on public.trips for select using (auth.uid()=owner_id);
+create policy "public reads trips" on public.trips for select to anon, authenticated using (true);
 create policy "owner creates trips" on public.trips for insert with check (auth.uid()=owner_id);
 create policy "owner updates trips" on public.trips for update using (auth.uid()=owner_id) with check (auth.uid()=owner_id);
 create policy "owner deletes trips" on public.trips for delete using (auth.uid()=owner_id);
-create policy "owner reads photos" on public.trip_photos for select using (auth.uid()=owner_id);
+create policy "public reads photo records" on public.trip_photos for select to anon, authenticated using (true);
 create policy "owner creates photos" on public.trip_photos for insert with check (auth.uid()=owner_id);
 create policy "owner deletes photos" on public.trip_photos for delete using (auth.uid()=owner_id);
 insert into storage.buckets (id,name,public,file_size_limit,allowed_mime_types)
-values ('trip-photos','trip-photos',false,8000000,array['image/jpeg','image/png','image/webp','image/heic'])
-on conflict (id) do update set public=false,file_size_limit=8000000;
-create policy "owner views stored photos" on storage.objects for select using (bucket_id='trip-photos' and (storage.foldername(name))[1]=auth.uid()::text);
+values ('trip-photos','trip-photos',true,8000000,array['image/jpeg','image/png','image/webp','image/heic'])
+on conflict (id) do update set public=true,file_size_limit=8000000;
 create policy "owner uploads stored photos" on storage.objects for insert with check (bucket_id='trip-photos' and (storage.foldername(name))[1]=auth.uid()::text);
 create policy "owner deletes stored photos" on storage.objects for delete using (bucket_id='trip-photos' and (storage.foldername(name))[1]=auth.uid()::text);
